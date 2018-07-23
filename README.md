@@ -80,6 +80,10 @@ $ pip install requests
 $ sudo apt-get install mpg321
 ```
 
+# 設定ファイル
+## google drive, spreadsheet の ID 設定
+config_template.ini をコピーして config.ini を作成
+
 ## サウンド
 タグを認識した際にならす効果音を audio フォルダに sound.mp3 という名前で配置
 

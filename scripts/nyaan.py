@@ -132,7 +132,8 @@ def register(tag):
 
 if __name__ == "__main__":
     inifile = ConfigParser.SafeConfigParser()
-    inifile.read('../config.ini')
+    configfile = os.path.dirname(os.path.abspath(__file__)) + "/../config.ini"
+    inifile.read(configfile)
     folder_id = inifile.get("google", "folder_id")
     master_sheet_id = inifile.get("google", "master_sheet_id")
     template_sheet_id = inifile.get("google", "template_sheet_id")
