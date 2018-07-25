@@ -24,7 +24,7 @@ class User:
 
 
 class GoogleSheets:
-    def __init__(self, folder_id, master_sheet_id, template_sheet_id):
+    def __init__(self, folder_id, master_sheet_id, template_sheet_id, credentials_folder):
         self.folder_id = folder_id
         self.master_sheet_id = master_sheet_id
         self.template_sheet_id = template_sheet_id
@@ -32,15 +32,13 @@ class GoogleSheets:
         while True:
             time.sleep(5)
             try:
-                credentials_folder = '../credentials/'
-
                 # Setup the Sheets API
                 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
-                store = file.Storage(credentials_folder + 'credentials.json')
+                store = file.Storage(credentials_folder + '/credentials.json')
                 creds = store.get()
 
                 if not creds or creds.invalid:
-                    flow = client.flow_from_clientsecrets(credentials_folder + 'client_secret.json', SCOPES)
+                    flow = client.flow_from_clientsecrets(credentials_folder + '/client_secret.json', SCOPES)
                     parser = argparse.ArgumentParser(add_help=False)
                     parser.add_argument('--logging_level', default='ERROR')
                     parser.add_argument('--noauth_local_webserver', action='store_true',
@@ -52,11 +50,11 @@ class GoogleSheets:
 
                 # Setup the Drive API
                 SCOPES = 'https://www.googleapis.com/auth/drive'
-                store = file.Storage(credentials_folder + 'credentials_drive.json')
+                store = file.Storage(credentials_folder + '/credentials_drive.json')
                 creds = store.get()
 
                 if not creds or creds.invalid:
-                    flow = client.flow_from_clientsecrets(credentials_folder + 'client_secret_drive.json', SCOPES)
+                    flow = client.flow_from_clientsecrets(credentials_folder + '/client_secret_drive.json', SCOPES)
                     parser = argparse.ArgumentParser(add_help=False)
                     parser.add_argument('--logging_level', default='ERROR')
                     parser.add_argument('--noauth_local_webserver', action='store_true',
@@ -66,8 +64,9 @@ class GoogleSheets:
                     creds = tools.run_flow(flow, store,args)
                 self.drive_service = build('drive', 'v3', http=creds.authorize(Http()))
                 break
-            except:
+            except Exception as e:
                 print("initialization error")
+                print(e)
 
     def createUser(self, name, tag_id, exclude_holiday):
         results = self.drive_service.files().list(
