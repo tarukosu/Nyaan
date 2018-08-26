@@ -161,7 +161,8 @@ if __name__ == "__main__":
     
     clf = nfc.ContactlessFrontend('usb')
     
-    gs = GoogleSheets(folder_id, master_sheet_id, template_sheet_id)
+    credentials_folder = os.path.dirname(os.path.abspath(__file__)) + "/../credentials"
+    gs = GoogleSheets(folder_id, master_sheet_id, template_sheet_id, credentials_folder)
 
     rdwr_options = {
         "targets" : ['212F', '424F']
