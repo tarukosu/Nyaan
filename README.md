@@ -100,12 +100,11 @@ https://console.developers.google.com/start/api?id=sheets.googleapis.com
 https://console.developers.google.com/start/api?id=drive.googleapis.com
 
 # 設定ファイル
-## google drive, spreadsheet の ID 設定
+## Google ドライブ, スプレッドシートの ID 設定
 config_template.ini をコピーして config.ini を作成します。  
 フォルダの ID と 2つのシートの ID を config.ini に記入してください。
 
-ID はフォルダやシートをブラウザで開いた際に、url の末尾に表示されている英数字です。
-
+ID はフォルダやシートをブラウザで開いた際に、url の末尾に表示されている英数字です。（以下の xxx の部分です）
 ```
 https://drive.google.com/drive/u/0/folders/xxxxxxxxxxxxxxxxxxxxxxx
 ```
