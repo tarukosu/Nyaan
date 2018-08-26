@@ -80,7 +80,7 @@ $ pip install requests
 $ sudo apt-get install mpg321
 ```
 
-# Google スプレッドシートやの準備
+# Google スプレッドシートの準備とシークレットキーの取得
 ## ドライブとシートの準備
 交通費申請シートを保存するためのフォルダを作成します。
 （Team Drive は使えません）
@@ -90,8 +90,14 @@ $ sudo apt-get install mpg321
 - https://docs.google.com/spreadsheets/d/1dStx3uWP2UkjDQgnr_VODASaIt8e_q7VLA-OcdxXlxY/edit?usp=sharing
 - https://docs.google.com/spreadsheets/d/1n9buB-A3SHqDjfHcShS1whdwOIb6v6B8tg2rjZ00TgU/edit?usp=sharing
 
+## シークレットキーの取得
+https://dev.classmethod.jp/etc/google-spreadsheet-append-csv-from-command-line/#toc-oauth
 
+上記ページを参考にして、以下のリンクから Sheets API を有効にし、ダウンロードしたファイルを client_secret.json という名前で credentials フォルダに配置します。  
+https://console.developers.google.com/start/api?id=sheets.googleapis.com
 
+同様に、以下のリンクから Drive API を有効にし、ダウンロードしたファイルを client_secret_drive.json という名前で credentials フォルダに配置します。  
+https://console.developers.google.com/start/api?id=drive.googleapis.com
 
 # 設定ファイル
 ## google drive, spreadsheet の ID 設定
@@ -108,7 +114,7 @@ https://drive.google.com/drive/u/0/folders/xxxxxxxxxxxxxxxxxxxxxxx
 ## サウンド
 タグを認識した際にならす効果音を audio フォルダに sound.mp3 という名前で配置してください。
 
-私は下記ページの「猫がニャーン１a」を利用させていただいています。
+私は下記ページの「猫がニャーン１a」を利用させていただいています。  
 http://taira-komori.jpn.org/animals01.html
 
 # 実行
